@@ -43,7 +43,7 @@ X-Login: vasya
 X-Password: secret
 
 ### posts.getById
-GET http://localhost:8080/posts/5
+GET http://localhost:8080/posts/1
 X-Login: vasya
 X-Password: secret
 
@@ -66,12 +66,12 @@ X-Password: secret
 Content-Type: application/json
 
 {
-  "id": 5,
+  "id": 1,
   "name": "new1",
   "content": "new update"
 }
 
 ### posts.deleteById
-DELETE http://localhost:8080/posts/5
+DELETE http://localhost:8080/posts/6
 X-Login: vasya
 X-Password: secret

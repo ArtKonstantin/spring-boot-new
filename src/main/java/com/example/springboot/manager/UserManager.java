@@ -57,10 +57,10 @@ public class UserManager {
         userRepository.deleteById(id);
     }
 
-    public void authenticate(String login, String password) {
-        final var byLogin = userRepository.findByLogin(login);
-        if (byLogin == null) {
-            throw new UserNotFoundException();
-        } else if (equals(passwordEncoder.encode(), password))
-    }
+//    public void authenticate(String login, String password) {
+//        final var byLogin = userRepository.findByLogin(login);
+//        if (byLogin == null) {
+//            throw new UserNotFoundException();
+//        } else if (equals(passwordEncoder.encode(), password))
+//    }
 }
