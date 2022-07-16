@@ -18,7 +18,7 @@ Content-Type: application/json
   "id": 0,
   "login": "vanya",
   "password": "secret",
-  "role": ["ROLE_ADMIN"]
+  "roles": ["ROLE_ADMIN"]
 }
 
 ### users.update
@@ -43,38 +43,40 @@ X-Password: password
 ### posts.getAll
 GET http://localhost:8080/posts
 X-Login: vasya
-X-Password: secret
+X-Password: password
 
 ### posts.getById
 GET http://localhost:8080/posts/1
 X-Login: vasya
-X-Password: secret
+X-Password: password
 
 ### posts.create
 POST http://localhost:8080/posts
 X-Login: vasya
-X-Password: secret
+X-Password: password
 Content-Type: application/json
 
 {
   "id": 0,
-  "name": "privet3",
-  "content": "Hello world!"
+  "name": "privet323",
+  "content": "Hello world!",
+  "tags": ["#HELLO", "WORLD"]
 }
 
 ### posts.update
 PUT http://localhost:8080/posts
 X-Login: vasya
-X-Password: secret
+X-Password: password
 Content-Type: application/json
 
 {
   "id": 1,
   "name": "new1",
-  "content": "new update"
+  "content": "new update",
+  "tags": ["NEW"]
 }
 
 ### posts.deleteById
-DELETE http://localhost:8080/posts/6
+DELETE http://localhost:8080/posts/4
 X-Login: vasya
-X-Password: secret
+X-Password: password

@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PostManager {
     private final PostRepository postRepository;
-    private final Function<PostEntity, PostResponseDTO> postEntityToPostResponseDTO = postEntity -> new PostResponseDTO(postEntity.getId(), postEntity.getName(), postEntity.getContent());
+    private final Function<PostEntity, PostResponseDTO> postEntityToPostResponseDTO = postEntity -> new PostResponseDTO(postEntity.getId(), postEntity.getName(), postEntity.getContent(), postEntity.getTags());
 
     public List<PostResponseDTO> getAll() {
         return postRepository.findAll().stream()
@@ -33,7 +33,7 @@ public class PostManager {
     }
 
     public PostResponseDTO create(final PostRequestDTO requestDTO) {
-        final PostEntity postEntity = new PostEntity(0, requestDTO.getName(), requestDTO.getContent());
+        final PostEntity postEntity = new PostEntity(0, requestDTO.getName(), requestDTO.getContent(), requestDTO.getTags());
         final var savedEntity = postRepository.save(postEntity);
         return postEntityToPostResponseDTO.apply(savedEntity);
     }
@@ -42,6 +42,7 @@ public class PostManager {
         final PostEntity postEntity = postRepository.getReferenceById(requestDTO.getId());
         postEntity.setName(requestDTO.getName());
         postEntity.setContent(requestDTO.getContent());
+        postEntity.setTags(requestDTO.getTags());
         return postEntityToPostResponseDTO.apply(postEntity);
     }
 

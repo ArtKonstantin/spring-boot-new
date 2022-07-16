@@ -17,3 +17,8 @@ CREATE TABLE posts(
                       created TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE post_tags(
+    post_id BIGINT NOT NULL REFERENCES posts,
+    tag TEXT NOT NULL
+);
+

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
@@ -21,4 +22,8 @@ public class PostEntity {
     private String name;
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
+    @ElementCollection
+    @CollectionTable(name = "post_tags", joinColumns = @JoinColumn(name = "post_id"))
+    @Column(name = "tag", nullable = false, columnDefinition = "TEXT")
+    private List<String> tags;
 }
