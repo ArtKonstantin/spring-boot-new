@@ -1,41 +1,44 @@
 ### users.getAll
 GET http://localhost:8080/users
 X-Login: vasya
-X-Password: secret
+X-Password: password
 
 ### users.getById
-GET http://localhost:8080/users/2
+GET http://localhost:8080/users/1
 X-Login: vasya
-X-Password: secret
+X-Password: password
 
 ### users.create
 POST http://localhost:8080/users
 X-Login: vasya
-X-Password: secret
+X-Password: password
 Content-Type: application/json
 
 {
   "id": 0,
   "login": "vanya",
-  "password": "secret"
+  "password": "secret",
+  "role": ["ROLE_ADMIN"]
 }
 
 ### users.update
 PUT http://localhost:8080/users
 X-Login: vasya
-X-Password: secret
+X-Password: password
 Content-Type: application/json
 
 {
   "id": 3,
   "login": "vanya",
-  "password": "top-secret"
+  "password": "secret"
 }
 
 ### users.deleteById
-DELETE http://localhost:8080/users/2
+DELETE http://localhost:8080/users/3
 X-Login: vasya
-X-Password: secret
+X-Password: password
+
+
 
 ### posts.getAll
 GET http://localhost:8080/posts

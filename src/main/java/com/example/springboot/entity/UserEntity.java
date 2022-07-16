@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -21,4 +22,8 @@ public class UserEntity {
     private String login;
     @Column(nullable = false, columnDefinition = "TEXT")
     private String password;
+    @ElementCollection
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role", nullable = false, columnDefinition = "TEXT")
+    private List<String> roles;
 }

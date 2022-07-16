@@ -3,6 +3,7 @@ package com.example.springboot.controller;
 import com.example.springboot.dto.UserRequestDTO;
 import com.example.springboot.dto.UserResponseDTO;
 import com.example.springboot.manager.UserManager;
+import com.example.springboot.security.Authentication;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,32 +15,31 @@ public class UserController {
     private final UserManager manager;
 
     @GetMapping("/users")
-    public List<UserResponseDTO> getAll() {
-        final List<UserResponseDTO> responseDTO = manager.getAll();
+    public List<UserResponseDTO> getAll(@RequestAttribute final Authentication authentication) {
+        final List<UserResponseDTO> responseDTO = manager.getAll(authentication);
         return responseDTO;
     }
 
-    // TODO: http://localhost:8080/users/1
     @GetMapping("/users/{id}")
-    public UserResponseDTO getById(@PathVariable final long id) {
-        final UserResponseDTO responseDTO = manager.getById(id);
+    public UserResponseDTO getById(@RequestAttribute final Authentication authentication, @PathVariable final long id) {
+        final UserResponseDTO responseDTO = manager.getById(authentication, id);
         return responseDTO;
     }
 
     @PostMapping("/users")
-    public UserResponseDTO create(@RequestBody final UserRequestDTO requestDTO) {
-        final UserResponseDTO responseDTO = manager.create(requestDTO);
+    public UserResponseDTO create(@RequestAttribute final Authentication authentication, @RequestBody final UserRequestDTO requestDTO) {
+        final UserResponseDTO responseDTO = manager.create(authentication, requestDTO);
         return responseDTO;
     }
 
     @PutMapping("/users")
-    public UserResponseDTO update(@RequestBody final UserRequestDTO requestDTO) {
-        final UserResponseDTO responseDTO = manager.update(requestDTO);
+    public UserResponseDTO update(@RequestAttribute final Authentication authentication, @RequestBody final UserRequestDTO requestDTO) {
+        final UserResponseDTO responseDTO = manager.update(authentication, requestDTO);
         return responseDTO;
     }
 
     @DeleteMapping("/users/{id}")
-    public void deleteById(@PathVariable final long id) {
-        manager.deleteById(id);
+    public void deleteById(@RequestAttribute final Authentication authentication, @PathVariable final long id) {
+        manager.deleteById(authentication, id);
     }
 }
