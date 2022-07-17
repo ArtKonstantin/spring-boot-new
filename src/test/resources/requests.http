@@ -46,7 +46,7 @@ X-Login: vasya
 X-Password: password
 
 ### posts.getById
-GET http://localhost:8080/posts/1
+GET http://localhost:8080/posts/2
 X-Login: vasya
 X-Password: password
 
@@ -58,7 +58,7 @@ Content-Type: application/json
 
 {
   "id": 0,
-  "name": "privet323",
+  "name": "privet",
   "content": "Hello world!",
   "tags": ["#HELLO", "WORLD"],
   "geo": {
@@ -74,17 +74,17 @@ X-Password: password
 Content-Type: application/json
 
 {
-  "id": 1,
+  "id": 2,
   "name": "new1",
   "content": "new update",
   "tags": ["NEW"],
   "geo": {
-    "lat": 70.00,
-    "lng": 30.00
+    "lat": 70.50,
+    "lng": 30.40
   }
 }
 
 ### posts.deleteById
-DELETE http://localhost:8080/posts/4
+DELETE http://localhost:8080/posts/3
 X-Login: vasya
 X-Password: password

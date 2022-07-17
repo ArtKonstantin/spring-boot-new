@@ -14,8 +14,8 @@ CREATE TABLE posts(
                       id BIGSERIAL PRIMARY KEY,
                       name TEXT NOT NULL UNIQUE,
                       content TEXT NOT NULL,
-                      geo_lat BIGINT,
-                      geo_lng BIGINT,
+                      geo_lat FLOAT,
+                      geo_lng FLOAT,
                       created TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

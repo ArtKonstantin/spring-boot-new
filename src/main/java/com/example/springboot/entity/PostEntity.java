@@ -31,5 +31,5 @@ public class PostEntity {
             @AttributeOverride(name = "lat", column = @Column(name = "geo_lat")),
             @AttributeOverride(name = "lng", column = @Column(name = "geo_lng"))
     })
-    private Geo geo;
+    private GeoEmbeddable geo;
 }

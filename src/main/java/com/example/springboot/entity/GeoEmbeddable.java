@@ -12,7 +12,7 @@ import javax.persistence.Embeddable;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Geo {
+public class GeoEmbeddable {
     private double lat;
     private double lng;
 }
