@@ -27,7 +27,9 @@ public class PostManager {
             postEntity.getName(),
             postEntity.getContent(),
             postEntity.getTags(),
-            Optional.of(postEntity.getGeo()).map(o -> new GeoDTO(o.getLat(), o.getLng())).orElse(null)
+            Optional.ofNullable(postEntity.getGeo())
+                    .map(o -> new GeoDTO(o.getLat(), o.getLng()))
+                    .orElse(null)
     );
 
     public List<PostResponseDTO> getAll(final Authentication authentication) {
@@ -50,7 +52,9 @@ public class PostManager {
                 requestDTO.getName(),
                 requestDTO.getContent(),
                 requestDTO.getTags(),
-                Optional.of(requestDTO.getGeo()).map(o -> new GeoEmbeddable(o.getLat(), o.getLng())).orElse(null)
+                Optional.ofNullable(requestDTO.getGeo())
+                        .map(o -> new GeoEmbeddable(o.getLat(), o.getLng()))
+                        .orElse(null)
         );
         final PostEntity savedEntity = postRepository.save(postEntity);
         return postEntityToPostResponseDTO.apply(savedEntity);
@@ -63,7 +67,9 @@ public class PostManager {
         postEntity.setContent(requestDTO.getContent());
         postEntity.setTags(requestDTO.getTags());
         postEntity.setGeo(
-                Optional.of(requestDTO.getGeo()).map(o -> new GeoEmbeddable(o.getLat(), o.getLng())).orElse(null)
+                Optional.ofNullable(requestDTO.getGeo())
+                        .map(o -> new GeoEmbeddable(o.getLat(), o.getLng()))
+                        .orElse(null)
         );
         return postEntityToPostResponseDTO.apply(postEntity);
     }
