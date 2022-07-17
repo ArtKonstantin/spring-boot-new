@@ -12,6 +12,7 @@ CREATE TABLE user_roles(
 
 CREATE TABLE posts(
                       id BIGSERIAL PRIMARY KEY,
+                      author_id BIGINT NOT NULL REFERENCES users,
                       name TEXT NOT NULL UNIQUE,
                       content TEXT NOT NULL,
                       geo_lat FLOAT,

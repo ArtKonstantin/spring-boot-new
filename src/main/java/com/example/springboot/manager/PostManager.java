@@ -1,12 +1,15 @@
 package com.example.springboot.manager;
 
+import com.example.springboot.dto.AuthorDTO;
 import com.example.springboot.dto.GeoDTO;
 import com.example.springboot.dto.PostRequestDTO;
 import com.example.springboot.dto.PostResponseDTO;
 import com.example.springboot.entity.GeoEmbeddable;
 import com.example.springboot.entity.PostEntity;
+import com.example.springboot.entity.UserEntity;
 import com.example.springboot.exception.PostNotFoundException;
 import com.example.springboot.repository.PostRepository;
+import com.example.springboot.repository.UserRepository;
 import com.example.springboot.security.Authentication;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -22,8 +25,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PostManager {
     private final PostRepository postRepository;
+    private final UserRepository userRepository;
     private final Function<PostEntity, PostResponseDTO> postEntityToPostResponseDTO = postEntity -> new PostResponseDTO(
             postEntity.getId(),
+            new AuthorDTO(postEntity.getAuthor().getId(), postEntity.getAuthor().getLogin()),
             postEntity.getName(),
             postEntity.getContent(),
             postEntity.getTags(),
@@ -47,8 +52,10 @@ public class PostManager {
     }
 
     public PostResponseDTO create(final Authentication authentication, final PostRequestDTO requestDTO) {
+        final UserEntity userEntity = userRepository.getReferenceById(authentication.getId());
         final PostEntity postEntity = new PostEntity(
                 0,
+                userEntity,
                 requestDTO.getName(),
                 requestDTO.getContent(),
                 requestDTO.getTags(),
