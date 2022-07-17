@@ -14,6 +14,8 @@ CREATE TABLE posts(
                       id BIGSERIAL PRIMARY KEY,
                       name TEXT NOT NULL UNIQUE,
                       content TEXT NOT NULL,
+                      geo_lat BIGINT,
+                      geo_lng BIGINT,
                       created TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -21,4 +23,5 @@ CREATE TABLE post_tags(
     post_id BIGINT NOT NULL REFERENCES posts,
     tag TEXT NOT NULL
 );
+
 

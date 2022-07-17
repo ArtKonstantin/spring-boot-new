@@ -60,7 +60,11 @@ Content-Type: application/json
   "id": 0,
   "name": "privet323",
   "content": "Hello world!",
-  "tags": ["#HELLO", "WORLD"]
+  "tags": ["#HELLO", "WORLD"],
+  "geo": {
+    "lat": 50.00,
+    "lng": 40.00
+  }
 }
 
 ### posts.update
@@ -73,7 +77,11 @@ Content-Type: application/json
   "id": 1,
   "name": "new1",
   "content": "new update",
-  "tags": ["NEW"]
+  "tags": ["NEW"],
+  "geo": {
+    "lat": 70.00,
+    "lng": 30.00
+  }
 }
 
 ### posts.deleteById

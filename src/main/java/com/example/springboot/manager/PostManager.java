@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PostManager {
     private final PostRepository postRepository;
-    private final Function<PostEntity, PostResponseDTO> postEntityToPostResponseDTO = postEntity -> new PostResponseDTO(postEntity.getId(), postEntity.getName(), postEntity.getContent(), postEntity.getTags());
+    private final Function<PostEntity, PostResponseDTO> postEntityToPostResponseDTO = postEntity -> new PostResponseDTO(postEntity.getId(), postEntity.getName(), postEntity.getContent(), postEntity.getTags(), postEntity.getGeo());
 
     public List<PostResponseDTO> getAll() {
         return postRepository.findAll().stream()
@@ -33,7 +33,7 @@ public class PostManager {
     }
 
     public PostResponseDTO create(final PostRequestDTO requestDTO) {
-        final PostEntity postEntity = new PostEntity(0, requestDTO.getName(), requestDTO.getContent(), requestDTO.getTags());
+        final PostEntity postEntity = new PostEntity(0, requestDTO.getName(), requestDTO.getContent(), requestDTO.getTags(), requestDTO.getGeo());
         final var savedEntity = postRepository.save(postEntity);
         return postEntityToPostResponseDTO.apply(savedEntity);
     }
@@ -43,6 +43,7 @@ public class PostManager {
         postEntity.setName(requestDTO.getName());
         postEntity.setContent(requestDTO.getContent());
         postEntity.setTags(requestDTO.getTags());
+        postEntity.setGeo((requestDTO.getGeo()));
         return postEntityToPostResponseDTO.apply(postEntity);
     }
 

@@ -26,4 +26,10 @@ public class PostEntity {
     @CollectionTable(name = "post_tags", joinColumns = @JoinColumn(name = "post_id"))
     @Column(name = "tag", nullable = false, columnDefinition = "TEXT")
     private List<String> tags;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "lat", column = @Column(name = "geo_lat")),
+            @AttributeOverride(name = "lng", column = @Column(name = "geo_lng"))
+    })
+    private Geo geo;
 }
