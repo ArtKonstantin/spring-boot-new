@@ -38,6 +38,7 @@ DELETE http://localhost:8080/users/3
 X-Login: vasya
 X-Password: password
 
+
 ### posts.getAll
 GET http://localhost:8080/posts
 X-Login: vasya
