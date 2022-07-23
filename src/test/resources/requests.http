@@ -16,8 +16,8 @@ Content-Type: application/json
 
 {
   "id": 0,
-  "login": "vanya",
-  "password": "secret",
+  "login": "vanya2",
+  "password": "secret10",
   "roles": ["ROLE_ADMIN"]
 }
 
@@ -56,12 +56,12 @@ Content-Type: application/json
 
 {
   "id": 0,
-  "name": "privet",
+  "name": "privet5",
   "content": "Hello world!",
-  "tags": ["#HELLO", "WORLD"],
+  "tags": ["#HELLO", "#Ёшка"],
   "geo": {
-    "lat": 50.00,
-    "lng": 40.00
+    "lat": -10.00,
+    "lng": 20.00
   }
 }
 
