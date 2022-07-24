@@ -4,7 +4,7 @@ X-Login: vasya
 X-Password: password
 
 ### users.getById
-GET http://localhost:8080/users/1
+GET http://localhost:8080/users/1111
 X-Login: vasya
 X-Password: password
 
@@ -16,9 +16,9 @@ Content-Type: application/json
 
 {
   "id": 0,
-  "login": "vanya2",
-  "password": "secret10",
-  "roles": ["ROLE_ADMIN"]
+  "login": "vanya",
+  "password": "secret",
+  "roles": ["ROLE_CLIENT"]
 }
 
 ### users.update
@@ -30,7 +30,8 @@ Content-Type: application/json
 {
   "id": 3,
   "login": "vanya",
-  "password": "secret"
+  "password": "secret",
+  "roles": ["ROLE_CLIENT"]
 }
 
 ### users.deleteById
@@ -44,7 +45,7 @@ X-Login: vasya
 X-Password: password
 
 ### posts.getById
-GET http://localhost:8080/posts/2
+GET http://localhost:8080/posts/222
 X-Login: vasya
 X-Password: password
 
@@ -56,11 +57,11 @@ Content-Type: application/json
 
 {
   "id": 0,
-  "name": "privet5",
+  "name": "hello",
   "content": "Hello world!",
   "tags": ["#HELLO", "#Ёшка"],
   "geo": {
-    "lat": -10.00,
+    "lat": 10.00,
     "lng": 20.00
   }
 }
@@ -72,7 +73,7 @@ X-Password: password
 Content-Type: application/json
 
 {
-  "id": 2,
+  "id": 1,
   "name": "new1",
   "content": "new update",
   "tags": ["NEW"],

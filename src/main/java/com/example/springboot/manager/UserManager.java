@@ -1,10 +1,7 @@
 package com.example.springboot.manager;
 
 import com.example.springboot.entity.UserEntity;
-import com.example.springboot.exception.ForbiddenException;
-import com.example.springboot.exception.UserLoginNotFoundException;
-import com.example.springboot.exception.UserNotFoundException;
-import com.example.springboot.exception.UserPasswordNotMatchesException;
+import com.example.springboot.exception.*;
 import com.example.springboot.repository.UserRepository;
 import com.example.springboot.security.Authentication;
 import com.example.springboot.security.Roles;
@@ -17,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 

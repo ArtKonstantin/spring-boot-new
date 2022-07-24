@@ -14,11 +14,12 @@ import java.util.List;
 
 @Validated
 @RestController
+@RequestMapping("/posts")
 @RequiredArgsConstructor
 public class PostController {
     private final PostManager manager;
 
-    @GetMapping("/posts")
+    @GetMapping
     public List<PostResponseDTO> getAll(
             @RequestAttribute final Authentication authentication
     ) {
@@ -27,7 +28,7 @@ public class PostController {
     }
 
     // TODO: http://localhost:8080/posts/1
-    @GetMapping("/posts/{id}")
+    @GetMapping("/{id}")
     public PostResponseDTO getById(
             @RequestAttribute final Authentication authentication,
             @Min(1) @PathVariable final long id
@@ -36,7 +37,7 @@ public class PostController {
         return responseDTO;
     }
 
-    @PostMapping("/posts")
+    @PostMapping
     public PostResponseDTO create(
             @RequestAttribute final Authentication authentication,
             @Valid @RequestBody final PostRequestDTO requestDTO
@@ -45,7 +46,7 @@ public class PostController {
         return responseDTO;
     }
 
-    @PutMapping("/posts")
+    @PutMapping
     public PostResponseDTO update(
             @RequestAttribute final Authentication authentication,
             @Valid @RequestBody final PostRequestDTO requestDTO
@@ -54,7 +55,7 @@ public class PostController {
         return responseDTO;
     }
 
-    @DeleteMapping("/posts/{id}")
+    @DeleteMapping("/{id}")
     public void deleteById(
             @RequestAttribute final Authentication authentication,
             @Min(1) @PathVariable final long id
